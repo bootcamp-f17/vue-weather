@@ -7,7 +7,7 @@ var app = new Vue({
     input: '',
     output: true,
     error: false,
-    errorMessage: 'https request could not be completed',
+    errorMessage: 'https request could not be completed, invalid zipcode.',
     apiRequest:'',
     temperatureOutputK: '',
     temperatureOutputF: '',
@@ -64,9 +64,10 @@ var app = new Vue({
     var tempF = Math.round(9/5 * (tempK - 273) + 32); // 9/5 (K - 273) + 32
     var tempC = tempK - 273; // K - 273
 
-    this.temperatureOutputK = tempK + "&deg;";
-    this.temperatureOutputF = tempF + "&deg;";
-    this.temperatureOutputC = tempC + "&deg;";
+    this.temperatureOutputK = tempK;
+    console.log(this.temperatureOutputK);
+    this.temperatureOutputF = tempF;
+    this.temperatureOutputC = tempC;
 
     this.cityOutput = results.name;
 
