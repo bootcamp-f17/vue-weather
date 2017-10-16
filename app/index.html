@@ -18,7 +18,7 @@
     <div id="error" v-if="error">
 
       <div class="panel-heading">
-        <h2>{{errorMessage}}</h2>
+        <h2>{{ errorMessage }}</h2>
       </div>
 
       <div class="panel-body" id="errorMessage"></div>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="panel-body">
-          <p>City Name</p>
+          <p>{{ cityOutput}}</p>
         </div>
 
       </div>
@@ -54,9 +54,9 @@
               <th>Celcius</th>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
+              <td>{{temperatureOutputK}}</td>
+              <td>{{temperatureOutputF}}</td>
+              <td>{{temperatureOutputC}}</td>
             </tr>
           </table>
 
@@ -71,7 +71,7 @@
         </div>
 
         <div class="panel-body">
-          <p>Condition output</p>
+          <p>{{conditionOutput}}</p>
         </div>
 
       </div>
