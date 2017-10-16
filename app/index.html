@@ -11,9 +11,12 @@
 
   <div id="inputForm">
 
-    <input type="number" class="form-control" placeholder="90210" v-model="input" v-on:keyup.enter="getWeather">
+    <div id='ZipCode' class="form-inline">
 
-    <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
+      <input type="number" class="form-control" placeholder="90210" v-model="input" v-on:keyup.enter="getWeather">
+
+      <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
+    </div>
 
     <div id="error" v-if="error">
 
@@ -30,7 +33,7 @@
       <div class="panel panel-info">
       
         <div class="panel-heading">
-          <h3 class="panel-title">City</h3>
+          <h3 class="panel-title">{{cityName}}</h3>
         </div>
 
         <div class="panel-body">
