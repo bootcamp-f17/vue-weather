@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vue Weather</title>
+  <title>Awesome Weather</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body class="container">
+  <h1>Awesome Weather</h1>
 
-  <h1>Vue Weather</h1>
+  <div id="weather">
 
-  <div id="inputForm">
+    <div id="inputForm" class="form-inline">
 
-    <input type="number" class="form-control" placeholder="90210" v-model="input" v-on:keyup.enter="getWeather">
+      <input type="number" class="form-control" placeholder="40507" v-model="zipInput">
 
-    <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
-
-    <div id="error" v-if="error">
-
-      <div class="panel-heading">
-        <h2>Error Message</h2>
-      </div>
-
-      <div class="panel-body" id="errorMessage"></div>
+      <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
 
     </div>
 
-    <div id="output">
+    <div id="error" class="panel panel-danger" v-if="showError">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Error</h3>
+      </div>
+
+      <div class="panel-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+    </div>
+
+    <div id="output" v-if="showOutput">
 
       <div class="panel panel-info">
-      
+
         <div class="panel-heading">
           <h3 class="panel-title">City</h3>
         </div>
 
         <div class="panel-body">
-          <p>City Name</p>
+          <p>{{ cityOutput }}</p>
         </div>
 
       </div>
@@ -46,17 +56,17 @@
         </div>
 
         <div class="panel-body">
-
+          
           <table class="table table-bordered">
             <tr>
               <th>Kelvin</th>
               <th>Fahrenheit</th>
-              <th>Celcius</th>
+              <th>Celsius</th>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
+              <td v-html="temperatureOutputK"></td>
+              <td v-html="temperatureOutputF"></td>
+              <td v-html="temperatureOutputC"></td>
             </tr>
           </table>
 
@@ -71,7 +81,7 @@
         </div>
 
         <div class="panel-body">
-          <p>Condition output</p>
+          <p>{{ conditionOutput }}</p>
         </div>
 
       </div>
@@ -83,7 +93,7 @@
         </div>
 
         <div class="panel-body">
-          <p>Picture goes here.</p>
+          <img alt="" :src="weatherImage" width="400">
         </div>
 
       </div>
