@@ -9,8 +9,23 @@
 
   <h1>Vue Weather</h1>
 
+  <div id="inputForm">
 
+    <input type="number" class="form-control" placeholder="90210" v-model="input">
 
+    <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
+
+    <div id="error" v-if="error">
+
+      <div class="panel-heading">
+        <h2>Error Message</h2>
+      </div>
+
+      <div class="panel-body" id="errorMessage"></div>
+
+    </div>
+
+  </div>
 
   <script src="https://unpkg.com/vue"></script>
   <script src="main.js"></script>
