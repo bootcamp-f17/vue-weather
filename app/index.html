@@ -11,7 +11,7 @@
 
   <div id="inputForm">
 
-    <input type="number" class="form-control" placeholder="90210" v-model="input">
+    <input type="number" class="form-control" placeholder="90210" v-model="input" v-on:keyup.enter="getWeather">
 
     <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
 
@@ -22,6 +22,59 @@
       </div>
 
       <div class="panel-body" id="errorMessage"></div>
+
+    </div>
+
+    <div id="output">
+
+      <div class="panel panel-info">
+      
+        <div class="panel-heading">
+          <h3 class="panel-title">City</h3>
+        </div>
+
+        <div class="panel-body">
+          <p>City Name</p>
+        </div>
+
+      </div>
+
+      <div class="panel panel-info">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">Temperature</h3>
+        </div>
+
+        <div class="panel-body">
+
+          <table class="table table-bordered">
+            <tr>
+              <th>Kelvin</th>
+              <th>Fahrenheit</th>
+              <th>Celcius</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+          </table>
+
+        </div>
+
+      </div>
+
+      <div class="panel panel-info">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">Condition</h3>
+        </div>
+
+        <div class="panel-body">
+          <p>Condition output</p>
+        </div>
+
+      </div>
 
     </div>
 
