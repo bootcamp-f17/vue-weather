@@ -4,6 +4,8 @@
   <title>Vue Weather</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 <body class="container">
 
@@ -11,7 +13,7 @@
 
   <div id="inputForm">
 
-    <input type="number" class="form-control" placeholder="90210" v-model="input" v-on:keyup.enter="getWeather">
+    <input type="number" class="form-control" placeholder="90210" v-model="zipInput" v-on:keyup.enter="getWeather">
 
     <button type="button" class="btn btn-success" v-on:click="getWeather">Get Weather</button>
 
