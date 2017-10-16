@@ -5,26 +5,48 @@ var app = new Vue({
   data: {
 
     input: '',
-    error: false
+    output: '',
+    error: false,
+    errorMessage: 'https request could not be completed'
+
 
   },
 
   methods: {
 
-    errorMessage: function() {
+    httpErrorMessage: function() {
       if (badApi === 'true') {
         this.error = true;
+
       }
     },
 
     getWeather: function() {
 
-      var url = 'http://api.openweathermap.org/data/2.5/weather?zip=<zipcode>&us&appid=ef6a94dab254dc386b931af4d5ca58c7';
+  var url="https://api.openweathermap.org/data/2.5/weather?zip=<zipcode>&us&appid=ef6a94dab254dc386b931af4d5ca58c7";
+  url = url.replace("<zipcode>", zipInput.value); 
 
-      alert("hello!");
+  apiRequest = new XMLHttpRequest();
+  apiRequest.onload = catchResponse;
+  apiRequest.onerror = httpErrorMessage;
+  apiRequest.open('get', url, true);
+  apiRequest.send();
 
-    }
+    },
+
+    catchResponse: function() {
+
+      if (apiRequest.statusText === "OK") {
+
+        this.errorMessage = '';
+        this.error = false;
+        this.output = true;
+
+        parseResponse();
+      }
 
   }
+
+}
 
 });
